@@ -119,6 +119,10 @@
    * leveraging jQuery events/widget system for controller OOP + interaction
    *
    * see 'Base Controller' widget below for more details.
+   * @param {String} name - name of the jQuery widget
+   * @param {Object/Element} parent - the parent of this controller, apps have no parents
+   * @param {Object/Element} el - any existing target object/element for this controller
+   * @opt {Object} - options hash to pass into widget creation
    */
   Brainless.controller = function(name, parent, el, opt) {
     var ctrl = el || {};
