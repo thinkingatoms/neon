@@ -43,8 +43,8 @@ utilizing the slew of established event handling,
 OOP inheritance, and other pluses.
 
 To learn more about jQuery widgets:
-http://learn.jquery.com/jquery-ui/widget-factory/why-use-the-widget-factory/
-http://msdn.microsoft.com/en-us/library/hh404085.aspx
+* http://learn.jquery.com/jquery-ui/widget-factory/why-use-the-widget-factory/
+* http://msdn.microsoft.com/en-us/library/hh404085.aspx
 
 Widgets can have other widgets as children.
 Any JS object can be attached to one or multiple widgets.
@@ -54,9 +54,9 @@ There are basically two types of controllers:
 * widgets created on a DOM jQuery element - more like view(model)
 
 FiPod controllers on plain objects:
-    static/js/fipod/controller.js
-    static/js/fipod/server.js - (other widgets created at the app level)
+* static/js/fipod/controller.js (includes widgets 'thinkingatoms.app', 'thinkingatoms.fipod')
+* static/js/fipod/server.js - (other widgets created at the app level)
 
 FiPod controllers for DOM elements are located in:
-    static/js/fipod/view.js
+* static/js/fipod/view.js
 
