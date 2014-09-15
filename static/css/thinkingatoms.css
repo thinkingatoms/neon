@@ -1,0 +1,990 @@
+/* ThinkingAtoms CSS */
+
+/* Fonts
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Open Sans Light'), local('OpenSans-Light'), url('opensans300.woff') format('woff');
+}
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Open Sans'), local('OpenSans'), url('opensans400.woff') format('woff');
+}
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Open Sans Bold'), local('OpenSans-Bold'), url('opensans700.woff') format('woff');
+}
+    */
+
+/* GLOBALS */
+
+.ui-mobile .thinkingatoms.ui-page {
+    height: 100%;
+    min-height: 100%;
+    max-height: 100%;
+}
+.ui-mobile .thinkingatoms.ui-page-active {
+    overflow: hidden;
+}
+.ui-mobile .thinkingatoms.ui-page-active.ta-welcoming {
+    overflow: visible;
+}
+html.touch .no-touch,
+html.no-touch .touch {
+    display: none;
+}
+.thinkingatoms,
+.thinkingatoms .ui-btn:not(.ui-btn-icon-notext),
+.thinkingatoms .ui-input-search > input {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 1em;
+}
+.thinkingatoms .ui-btn {
+    /* border: 0 !important;
+    border-radius: .3125em !important;
+    -webkit-border-radius: .3125em !important;
+     * */
+    opacity: .8 !important;
+    filter: Alpha(Opacity=80) !important;
+}
+.thinkingatoms .ui-btn:after {
+    opacity: 0.8 !important;
+    filter: Alpha(Opacity=80) !important;
+}
+/* control group */
+
+.thinkingatoms .ui-controlgroup .ui-btn:after {
+    padding: 0.5em 1em;
+}
+.thinkingatoms .ui-controlgroup .ui-btn:after {
+    opacity: 1;
+}
+/* control group */
+
+.thinkingatoms .ta-header .ui-btn-icon-top:after {
+    top: 0.3em;
+}
+.thinkingatoms .ta-header .ui-btn-icon-notext:after,
+.thinkingatoms .ta-footer .ui-btn-icon-notext:after {
+    top: 42%;
+}
+.thinkingatoms .ui-link {
+    font-weight: 400;
+}
+.thinkingatoms .ui-draggable,
+.thinkingatoms .ui-sortable .ui-btn:not(.ta-btn-icon) {
+    cursor: hand;
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+}
+.thinkingatoms .ui-draggable-dragging,
+.thinkingatoms .ui-sortable .ui-btn.ta-grabbed {
+    /* TODO: sortable-sorting?? */
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+}
+/* Header */
+
+.thinkingatoms .ta-header,
+.thinkingatoms .ta-footer {
+    height: 1.5em;
+}
+.thinkingatoms .ta-header.ui-grid-b > .ui-block-a {
+    width: 5%;
+}
+.thinkingatoms .ta-header.ui-grid-b > .ui-block-b {
+    width: 50%;
+}
+.thinkingatoms .ta-header.ui-grid-b > .ui-block-c {
+    width: 45%;
+    float: right;
+}
+.thinkingatoms .ta-header .ui-btn.ta-btn-nav {
+    padding: 0 0.2em;
+}
+.thinkingatoms .ta-header.ui-header .ui-title {
+    border: none;
+    font-size: 1em;
+    font-weight: 400;
+    padding: 0.125em 0.3125em 0.125em;
+    margin: 0 0 0 12%;
+    background: none repeat scroll 0 0 transparent;
+    box-shadow: none;
+    text-shadow: none;
+}
+.thinkingatoms .ta-header .ui-btn,
+.thinkingatoms .ta-footer .ui-btn {
+    border-radius: 0 !important;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    bottom: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+}
+.thinkingatoms .ta-header .ta-responsive .ui-btn,
+.thinkingatoms .ta-footer .ui-btn {
+    width: 100%;
+}
+/* Footer */
+
+.thinkingatoms .ta-footer {
+    /*position: absolute;
+    width: 100%;
+    */
+    bottom: 0;
+    padding-bottom: 0;
+    border-bottom-width: 0;
+}
+/*
+.thinkingatoms .ta-footer > .ta-status.ui-block-a {
+    font-size: 0.75em;
+    width: 64%;
+}
+.thinkingatoms .ta-footer > .ui-block-b {
+    width: 36%;
+    float: right;
+}
+.thinkingatoms .ui-footer .ui-grid-b > div {
+  float: right;
+}
+.thinkingatoms .ui-footer .ui-btn {
+    font-size: 0.7em;
+}
+  */
+
+/* Content */
+
+/*
+.thinkingatoms .ui-content > h1,
+.thinkingatoms .ui-content > h2,
+.thinkingatoms .ui-content > h3,
+.thinkingatoms .ui-content > p,
+.thinkingatoms .ui-content > ul li,
+.thinkingatoms .ui-content > a {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+}
+  */
+
+.thinkingatoms .ui-content {
+    text-shadow: none !important;
+}
+.thinkingatoms .ui-content > h1 {
+    font-size: 2.4em;
+    margin: 0 0 .625em;
+}
+.thinkingatoms .ui-content > h2 {
+    font-size: 1.6em;
+    padding-bottom: .2em;
+    margin: 0 0 .7375em;
+}
+.thinkingatoms .ui-content > h3 {
+    font-size: 1.4em;
+    margin: 0 0 1em;
+}
+.thinkingatoms .ui-content > p {
+    padding-top: 1em;
+    font-size: 1.2em;
+    line-height: 1.5;
+    margin: 0 0 1.25em;
+}
+.thinkingatoms .ui-content > a,
+.thinkingatoms .ui-content > p a,
+.thinkingatoms .ui-content > ul li a {
+    text-decoration: none;
+}
+.thinkingatoms .ui-content strong,
+.thinkingatoms .ui-content > p strong {
+    font-weight: 400;
+}
+.thinkingatoms .ui-content > ul,
+.thinkingatoms .ui-content > ol {
+    padding-left: 1.3em;
+}
+.thinkingatoms .ui-content > ul li {
+    font-size: 1.1em;
+}
+.thinkingatoms .ui-content > .ui-listview {
+    padding-left: 0;
+}
+/* Home */
+
+.thinkingatoms .ui-content .ta-welcome {
+    display: none;
+    margin: 1em;
+    overflow: visible;
+}
+.thinkingatoms.ta-welcoming .ui-content .ta-welcome {
+    display: block;
+}
+.thinkingatoms .ui-content .ta-welcome.ta-btn-start {
+    display: inline-block;
+    padding: 0.2em 2.5em 0.2em 0.5em;
+    margin: 0;
+    opacity: 1 !important;
+}
+/*
+.thinkingatoms .ui-content .ta-welcome p:last-child {
+    margin-bottom: 0;
+}
+  */
+
+/* Panels */
+
+.thinkingatoms .ui-panel p:last-child {
+    margin-bottom: 0;
+}
+.thinkingatoms .ui-panel,
+.thinkingatoms .ui-panel .ui-btn,
+.thinkingatoms .ui-panel .ui-select,
+.thinkingatoms .ui-panel .ui-listview .ui-btn,
+.thinkingatoms .ui-panel .ui-listview .ui-collapsible-heading {
+    text-shadow: none !important;
+    margin: 0 !important;
+    border-width: 0;
+    /* padding: 0 !important;
+    border: none !important; */
+}
+.thinkingatoms .ui-panel .ui-listview .ui-listview .ui-btn {
+    padding-left: 2em;
+    padding-right: 2em;
+}
+.thinkingatoms .ui-panel .ui-btn.ui-input-clear {
+    margin: -14px 0.3125em 0 !important;
+    padding: 0 !important;
+}
+.thinkingatoms .ui-panel .ui-collapsible-content > .ui-listview > li:not(.ui-last-child) > .ui-btn,
+.thinkingatoms .ui-panel .ui-select > .ui-btn {
+    background-color: rgba(51, 136, 204, 0.7);
+    color: #fff;
+    display: block !important;
+}
+.thinkingatoms .ui-panel .ui-listview > li .ui-li-static,
+.thinkingatoms .ui-panel .ui-collapsible.ui-li-static {
+    padding: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+}
+.thinkingatoms .ui-panel .ui-listview .ui-listview .ui-btn,
+.thinkingatoms .ui-panel .ui-select .ui-btn:not(.ta-btn-icon) {
+    /* padding-left: 1em; */
+    font-size: 0.95em;
+    /* opacity: .9; */
+    white-space: normal;
+    text-align: left;
+}
+/*
+.thinkingatoms .ui-panel .ui-collapsible-themed-content .ui-listview:not(.ui-listview-inset) > li.ui-last-child,
+.ui-collapsible-themed-content .ui-listview:not(.ui-listview-inset) > li.ui-last-child > a.ui-btn {
+    border-bottom-width: 1px;
+}
+  */
+
+/* Nav */
+
+/* Settings */
+
+.thinkingatoms .ui-panel .ui-filterable + .ui-listview {
+    /* TODO: review me, ideally should drop to just before footer */
+    max-height: 10em;
+    overflow-y: auto;
+    border-bottom-width: 0;
+}
+/* Selects */
+
+.thinkingatoms .ui-selectmenu.ui-popup a.ui-btn {
+    opacity: 0.7;
+}
+.thinkingatoms .ui-panel .ui-sortable .ui-btn {
+    background-color: rgba(51, 136, 204, 0.5);
+    border-top-width: 0;
+}
+.thinkingatoms .ui-panel .ui-sortable .ta-btn-icon.ui-btn {
+    background-color: transparent;
+    padding-right: 0 !important;
+    /*color: rgba(51, 136, 204, 0.35);
+    opacity: 0.5;
+    filter: Alpha(Opacity=50); */
+}
+.thinkingatoms .ui-panel .ui-sortable .ui-btn-icon-left:after {
+    /* shift bars to sortables on left */
+    left: 0.3em;
+}
+.thinkingatoms .ta-nav-panel .ui-collapsible-content {
+    border-bottom-width: 0;
+}
+/*
+.ta-nav-panel .ui-btn:after {
+} */
+
+/* top inner drop downs 
+.ta-nav-panel .ui-listview > li .ui-collapsible-heading {
+    margin: 0;
+} */
+
+/*
+.ta-nav-panel .ui-panel-inner > .ui-listview > li.ui-first-child .ui-btn,
+.ta-nav-panel .ui-collapsible-heading > .ui-btn,
+.ta-nav-panel .ui-collapsible-content .ui-filterable + .ui-listview,
+/*.ta-nav-panel .ui-collapsible > .ui-collapsible-content .ui-input-search, 
+.ta-nav-panel .ui-collapsible + li > .ui-btn,
+
+  */
+
+/* Side Panels */
+
+.thinkingatoms .ta-side-panel {
+    border-radius: none;
+    white-space: normal;
+}
+.ta-side-panel .ta-invalid {
+    color: crimson;
+}
+.ta-side-panel .ta-success {
+    color: #33dd99;
+}
+.ta-side-panel h3 {
+    margin-top: 0;
+}
+.ta-side-panel .ui-collapsible-heading .ui-btn {
+    font-weight: 400;
+}
+.ta-side-panel .ui-collapsible-content {
+    padding: 0.5em 0.6em;
+}
+.ta-side-panel .ui-listview .ui-li-static {
+    margin-left: 0.5em;
+    white-space: normal;
+}
+.ta-side-panel .ta-close.ui-btn {
+    position: absolute;
+    /* top: 0.5em; */
+    right: 1em;
+    border-radius: 1em !important;
+}
+/* Help Tips, Alt Texts */
+
+.thinkingatoms .ui-popup.ui-content {
+    max-width: 17em;
+}
+.thinkingatoms .ta-dialog .ui-btn:not(.ta-close) {
+    width: 4em;
+    padding: 0.3125em 1em;
+}
+.thinkingatoms .ta-tooltip.ui-popup.ui-content > p {
+    margin: 0;
+    padding: 0.3125em;
+    font-size: 1em;
+}
+.thinkingatoms .ta-tooltip .ta-tooltip-tip > a {
+    margin: 0 0.5em 0 0;
+}
+.thinkingatoms .ta-row {
+    min-width: 10em;
+    line-height: 1.1;
+    clear: both;
+    padding: 0 0 0.125em;
+    /* font-weight: 400;
+    font-size: 1em;
+     * */
+    width: 100%;
+}
+.thinkingatoms .ta-row .ta-key {
+    float: left;
+    padding-bottom: 0.2em;
+    font-size: 0.9375em;
+    width: 77%;
+}
+.thinkingatoms .ta-row .ta-key p {
+    margin: 0;
+    font-size: 0.9375em;
+    padding: 0 0 0.125em;
+    text-overflow: ellipsis;
+}
+.thinkingatoms .ta-row .ta-value {
+    font-size: 0.9375em;
+    float: right;
+}
+/*
+.thinkingatoms .ta-alttext {
+    position: absolute;
+    width: 90%;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #000;
+}
+.thinkingatoms .ta-alttext .ta-title {
+    font-size: 1.1em;
+    padding: 0 0 0.5em;
+    font-weight: 400;
+}
+  */
+
+/* SVG */
+
+.thinkingatoms .ta-main.ui-content {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.thinkingatoms.ta-welcoming .ta-main.ui-content {
+    overflow: visible;
+    height: auto !important;
+}
+.thinkingatoms #graphs {
+    height: 100%;
+}
+.thinkingatoms .ta-main > .ui-grid-a > .ui-block-a {
+    overflow: hidden;
+}
+.thinkingatoms .ta-main > .ui-grid-a > .ui-block-a,
+.thinkingatoms .ta-main > .ui-grid-a > .ui-block-b {
+    width: 100%;
+}
+.thinkingatoms .ta-main > .ui-grid-a > .ui-block-a {
+    height: 40%;
+    max-height: 40%;
+}
+.thinkingatoms .ta-main.ta-mini > .ui-grid-a > .ui-block-a {
+    height: 90%;
+    max-height: 90%;
+}
+.thinkingatoms .ta-main > .ui-grid-a > .ui-block-b {
+    height: 60%;
+    max-height: 60%;
+}
+.thinkingatoms .ta-main.ta-mini > .ui-grid-a > .ui-block-b {
+    height: 10%;
+    max-height: 10%;
+}
+.thinkingatoms .ta-main.ta-mini .ta-screen > .ui-block-a {
+    height: 14em;
+}
+.thinkingatoms .ta-main .ta-screen {
+    /* z-index: 1200;
+    clear: both;
+    float: right;
+    position: relative;
+    top: none !important;
+    left: none !important;
+    display: inline-block;
+    pointer-events: none;
+    font-size: 0.85em;
+    width: 99%; */
+    background: rgba(255, 255, 255, 0.7);
+    /*
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+    padding: 0 0.5em;
+    margin: 0.3em;
+    */
+    margin: 0.25em auto 0;
+    height: 97%;
+    width: 95%;
+    box-shadow: 1px 1px 0.5em #555 inset;
+    -moz-box-shadow: 1px 1px 0.5em #555 inset;
+    border: 1px solid rgba(200, 200, 200, 0.85);
+}
+.thinkingatoms .ta-screen > .ui-block-a,
+.thinkingatoms .ta-screen > .ui-block-b {
+    width: 100%;
+}
+.thinkingatoms .ta-screen > .ui-block-a {
+    min-height: 6em;
+}
+.thinkingatoms .ta-main:not(.ta-mini) .ta-screen > .ui-block-b {
+    overflow: hidden;
+}
+/*
+.thinkingatoms .ta-screen .ui-block-a .ui-collapsible {
+    margin: 0 0.5em 0.5em;
+}
+.thinkingatoms .ta-screen .ui-block-a .ta-legend.ui-listview .ui-btn {
+    background-color: inherit;
+}
+  */
+
+.thinkingatoms .ta-screen .ui-block-a .ui-input-search {
+    margin: 0.5em 0.5em 0;
+}
+.thinkingatoms .ui-input-text input::-moz-placeholder,
+.thinkingatoms .ui-input-search input::-moz-placeholder,
+.thinkingatoms textarea.ui-input-text::-moz-placeholder {
+    color: inherit;
+}
+.thinkingatoms .ta-screen .ui-block-a .ui-listview {
+    margin: 0.125em 0.5em;
+    display: none;
+    max-height: 6em;
+    overflow-y: auto;
+}
+.thinkingatoms .ta-screen .ui-block-a .ta-results.ui-listview {
+    display: block;
+    margin: 0 0.5em;
+}
+.thinkingatoms .ta-screen .ui-block-a .ta-alttext.ui-listview {
+    margin: 0.25em 0.5em 0;
+    display: block;
+    overflow: hidden;
+}
+.thinkingatoms .ta-screen .ui-block-a .ui-listview .ui-btn {
+    border: 0;
+    box-shadow: none;
+    /*margin: 0; */
+    padding: 0.125em 0.5em;
+    text-shadow: none;
+    opacity: 1 !important;
+}
+.thinkingatoms .ta-screen .ui-block-a .ta-alttext.ui-listview .ui-btn {
+    background-color: rgba(51, 136, 204, 0.7);
+    color: #fff;
+}
+.thinkingatoms .ta-screen .ui-block-a .ui-listview > li.ui-li-has-alt > .ui-btn:first-child {
+    margin-right: 2.125em;
+}
+.thinkingatoms .ta-screen .ui-block-a .ui-listview .ui-btn + .ui-btn {
+    width: 2em;
+}
+.thinkingatoms .ta-screen .ui-block-a .ui-listview .ui-btn.ui-btn-icon-notext {
+    opacity: 1 !important;
+    /* color: #3388cc; */
+}
+.thinkingatoms .ta-screen svg {
+    -ms-user-select: none;
+    /* IE 10+ */
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+.thinkingatoms .ta-main.ui-content svg {
+    overflow: visible;
+    display: block;
+    margin: auto;
+}
+.thinkingatoms .ta-main.ui-content > .ta-welcome svg {
+    width: 17em;
+    height: 26.5em;
+    margin-bottom: 1em;
+}
+.thinkingatoms svg .ta-filtered {
+    opacity: 0.1 !important;
+}
+.thinkingatoms .ta-legend li.ta-filtered,
+.thinkingatoms .ta-legend li.ta-disabled {
+    opacity: 0.5 !important;
+}
+.thinkingatoms .ta-legend li.ta-filtered-in,
+.thinkingatoms svg .ta-filtered-in {
+    opacity: 1 !important;
+}
+/*
+.thinkingatoms svg .ta-filtered-in.ta-show-all {
+    visibility: visible !important;
+}
+  */
+
+.thinkingatoms .ta-icons {
+    opacity: 0.8 !important;
+    stroke: #000 !important;
+    stroke-width: 0.07em !important;
+    fill: #000 !important;
+}
+.thinkingatoms .ta-icons .ta-icon-disc {
+    fill: #fff;
+}
+.thinkingatoms .grid .tick {
+    stroke: lightgrey;
+    opacity: 0.7;
+}
+.thinkingatoms .grid path {
+    stroke-width: 0;
+}
+.thinkingatoms .axis path,
+.thinkingatoms .axis line {
+    cursor: default !important;
+    stroke: #000;
+    shape-rendering: crispEdges;
+    fill: none !important;
+}
+.thinkingatoms .ta-disabled .grid,
+.thinkingatoms .ta-disabled .axis {
+    display: none;
+}
+.thinkingatoms .outline {
+    visibility: hidden;
+    opacity: 0.5;
+}
+.thinkingatoms .outline:hover {
+    opacity: 1;
+}
+.thinkingatoms .outline > path,
+.thinkingatoms .paths > path {
+    stroke: #aaa;
+    stroke-width: 1;
+}
+.thinkingatoms .paths > path {
+    cursor: pointer;
+}
+.thinkingatoms .outline text {
+    font-size: 1.5em;
+    cursor: default;
+}
+.thinkingatoms .outline rect,
+.thinkingatoms .outline circle {
+    stroke: none;
+    fill: transparent;
+}
+.thinkingatoms .outline > path {
+    stroke: #aaa;
+    stroke-width: 1px;
+}
+.thinkingatoms .outline > path:hover {
+    stroke: rgba(51, 136, 204, 0.7) !important;
+}
+.thinkingatoms .outline:hover rect,
+.thinkingatoms .outline:hover circle,
+.thinkingatoms .paths > path:hover {
+    fill: rgba(51, 136, 204, 0.7) !important;
+}
+.thinkingatoms ul.ta-legend > li.ta-hover > a:first-child {
+    background-color: rgba(51, 136, 204, 0.5) !important;
+}
+.thinkingatoms ul.ta-legend > li.ta-disabled div.ta-value {
+    display: none;
+}
+.thinkingatoms .lines > path {
+    fill: none !important;
+    stroke-width: 0.25em;
+}
+.thinkingatoms .lines > path.ta-filtered-in,
+.thinkingatoms .lines > path.ta-hover:not(.ta-filtered),
+.thinkingatoms .lines > path:hover {
+    stroke-width: 0.5em;
+}
+.thinkingatoms .points > circle,
+.thinkingatoms .voronoi > path {
+    fill: transparent !important;
+    stroke: transparent !important;
+    stroke-width: 0;
+}
+.thinkingatoms .dots > circle {
+    fill: #fff;
+    stroke-width: 0.2em;
+}
+/*
+.thinkingatoms .dots > circle.ta-hover {
+    fill: #fff;
+}
+  */
+
+.thinkingatoms text {
+    font-size: 1.4em;
+    font-family: 'Open Sans';
+    cursor: pointer;
+}
+.thinkingatoms text.root {
+    font-size: 1.5em;
+}
+.thinkingatoms text .value {
+    font-weight: 400;
+}
+.thinkingatoms text.twoline {
+    font-size: 1.3em;
+}
+/* Lights Off Theme */
+
+body.ui-overlay-a,
+.thinkingatoms.ui-page-theme-a {
+    background-color: #fff;
+}
+body.ui-overlay-b,
+body.ui-overlay-a.ui-overlay-b {
+    background-color: #252525;
+}
+.thinkingatoms.ui-page-theme-a .ui-bar-inherit {
+    background-color: #fffafa;
+}
+.thinkingatoms.ui-page-theme-b .ui-input-search:after {
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22iso-8859-1%22%3F%3E%3C!DOCTYPE%20svg%20PUBLIC%20%22-%2F%2FW3C%2F%2FDTD%20SVG%201.1%2F%2FEN%22%20%22http%3A%2F%2Fwww.w3.org%2FGraphics%2FSVG%2F1.1%2FDTD%2Fsvg11.dtd%22%3E%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%20%20width%3D%2214px%22%20height%3D%2214px%22%20viewBox%3D%220%200%2014%2014%22%20style%3D%22enable-background%3Anew%200%200%2014%2014%3B%22%20xml%3Aspace%3D%22preserve%22%3E%3Cpath%20style%3D%22fill%3A%23FFFFFF%3B%22%20d%3D%22M10.171%2C8.766c0.617-0.888%2C0.979-1.964%2C0.979-3.126c0-3.037-2.463-5.5-5.5-5.5s-5.5%2C2.463-5.5%2C5.5%20s2.463%2C5.5%2C5.5%2C5.5c1.152%2C0%2C2.223-0.355%2C3.104-0.962l3.684%2C3.683l1.414-1.414L10.171%2C8.766z%20M5.649%2C9.14c-1.933%2C0-3.5-1.567-3.5-3.5%20c0-1.933%2C1.567-3.5%2C3.5-3.5c1.933%2C0%2C3.5%2C1.567%2C3.5%2C3.5C9.149%2C7.572%2C7.582%2C9.14%2C5.649%2C9.14z%22%2F%3E%3C%2Fsvg%3E");
+}
+.thinkingatoms.ui-page-theme-b .ui-icon-loading {
+    background-color: #fff;
+}
+.thinkingatoms.ui-page-theme-b .ui-body-inherit {
+    border-color: #aaa;
+}
+.thinkingatoms.ui-page-theme-b .ui-panel-position-left.ui-panel-display-overlay {
+    box-shadow: 5px 0 5px rgba(170, 170, 170, 0.5);
+}
+.thinkingatoms.ui-page-theme-b .ui-panel-position-right.ui-panel-display-overlay {
+    box-shadow: -5px 0 5px rgba(170, 170, 170, 0.5);
+}
+/*.thinkingatoms.ui-page-theme-b .ta-side-panel .ui-listview:not(.ui-listview-inset) > li.ui-first-child, .ui-collapsible-content > .ui-listview:not(.ui-listview-inset) > li.ui-first-child > a.ui-btn */
+
+.thinkingatoms.ui-page-theme-b .ta-side-panel .ui-listview > li.ui-first-child {
+    border-top-width: 1px;
+}
+.thinkingatoms.ui-page-theme-b .ta-main .ta-screen {
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 1px 1px 0.5em #aaa inset;
+}
+.thinkingatoms.ui-page-theme-b .ta-icons {
+    fill: #fff !important;
+    stroke: #fff !important;
+}
+.thinkingatoms.ui-page-theme-b .ta-icons .ta-icon-disc {
+    fill: #000;
+}
+.thinkingatoms.ui-page-theme-b text {
+    fill: #d2faca;
+    font-weight: 400;
+}
+.thinkingatoms.ui-page-theme-b .axis line,
+.thinkingatoms.ui-page-theme-b .axis path {
+    stroke: #d2faca;
+}
+.thinkingatoms.ui-page-theme-b .paths > path:hover {
+    fill: rgb(112, 172, 219) !important;
+}
+.thinkingatoms.ui-page-theme-b ul.ta-legend > li.ta-hover > a:first-child {
+    background-color: rgb(112, 172, 219) !important;
+}
+.thinkingatoms.ui-page-theme-b text.ta-alt-font {
+    fill: #777;
+    font-weight: 400;
+}
+@media (min-width: 35em) {
+    /*
+    .thinkingatoms .ta-responsive-hide {
+        display: none;
+    }
+    .thinkingatoms .ui-header .ui-btn,
+    .thinkingatoms .ui-footer .ui-btn {
+        padding: 0;
+    }
+    .thinkingatoms .ui-header .ta-responsive .ui-btn,
+    .thinkingatoms .ui-footer .ui-btn {
+        width: 100%;
+    }
+      */
+    .thinkingatoms .ta-header.ui-grid-b > .ui-block-c {
+        width: 33%;
+        /* 45% */
+    }
+    .thinkingatoms .ta-header .ui-btn.ui-title {
+        margin-left: 4em;
+    }
+    /*
+    .thinkingatoms .ui-panel .ui-listview .ui-listview .ui-btn.ui-input-clear {
+        padding: 0;
+    }
+        */
+    .thinkingatoms .ui-panel .ui-listview .ui-listview.ui-sortable .ui-btn {
+        padding-right: 2.5em;
+    }
+    .thinkingatoms .ta-main > .ui-grid-a > .ui-block-a,
+    .thinkingatoms .ta-main > .ui-grid-a > .ui-block-b,
+    .thinkingatoms .ta-main.ta-mini > .ui-grid-a > .ui-block-a,
+    .thinkingatoms .ta-main.ta-mini > .ui-grid-a > .ui-block-b {
+        height: 100%;
+        max-height: 100%;
+    }
+    .thinkingatoms .ta-main > .ui-grid-a > .ui-block-a {
+        width: 55%;
+        float: right;
+    }
+    .thinkingatoms .ta-main > .ui-grid-a > .ui-block-b {
+        width: 45%;
+        float: left;
+    }
+    /*
+    .thinkingatoms .ui-content > .ta-welcome.ui-grid-a {
+        margin: 1em 5%;
+    }
+      */
+    .thinkingatoms .ta-main.ui-content > .ta-welcome.ui-grid-a > .ui-block-a {
+        float: left;
+        width: 50%;
+        text-align: right;
+    }
+    .thinkingatoms .ta-main.ui-content > .ta-welcome.ui-grid-a > .ui-block-b {
+        float: left;
+        width: 50%;
+    }
+    .thinkingatoms .ta-main.ui-content > .ta-welcome.ui-grid-a > .ui-block-a > div {
+        padding: 1em 0 1em 10%;
+    }
+    .thinkingatoms .ta-main.ui-content > .ta-welcome.ui-grid-a svg {
+        margin: 0 10% 1em;
+    }
+    .thinkingatoms .ta-main.ta-mini > .ui-grid-a > .ui-block-a {
+        width: 90%;
+    }
+    .thinkingatoms .ta-main.ta-mini > .ui-grid-a > .ui-block-b {
+        width: 10%;
+    }
+    .thinkingatoms .ta-main .ta-screen {
+        height: 95%;
+    }
+    .thinkingatoms .ta-main.ta-mini .ta-screen > .ui-block-a {
+        height: 100%;
+        width: 60%;
+        float: right;
+    }
+    .thinkingatoms .ta-main.ta-mini .ta-screen > .ui-block-b {
+        height: 100%;
+        width: 40%;
+        clear: left;
+    }
+    /*
+    .thinkingatoms .ta-alttext {
+        width: 36%;
+    }
+      */
+    .thinkingatoms .lines > path {
+        stroke-width: 0.15em;
+    }
+    .thinkingatoms .dots > circle {
+        stroke-width: 0.1em;
+    }
+    .thinkingatoms text {
+        font-size: 1.125em;
+    }
+    .thinkingatoms text.root {
+        font-size: 1.25em;
+    }
+    .thinkingatoms text.twoline {
+        font-size: 1em;
+    }
+}
+@media (min-width: 60em) {
+    .thinkingatoms .ta-header {
+        height: 3em;
+    }
+    .thinkingatoms .ta-header.ui-grid-b > .ui-block-c {
+        /* width: 36%; */
+        width: 27%;
+    }
+    .thinkingatoms .ta-header .ui-btn.ta-btn-nav {
+        font-size: 1.5em;
+        padding: 0.2em;
+    }
+    .thinkingatoms .ta-header .ui-btn.ui-title {
+        left: 0;
+        font-size: 1.25em;
+        padding: 0.6em 2em;
+        margin-left: 3em;
+    }
+    .thinkingatoms .ta-header .ui-btn,
+    .thinkingatoms .ta-footer .ui-btn {
+        font-size: 0.85em;
+        font-weight: 400;
+    }
+    /*
+    .thinkingatoms .ta-responsive-show {
+        display: block;
+    }
+    .thinkingatoms .ui-header .ui-btn {
+        padding: 2em 0.5em 0.5em;
+    }
+    .thinkingatoms .ui-footer {
+        height: 2.2em;
+    }
+     */
+    .thinkingatoms .ta-header .ta-responsive .ui-btn {
+        padding: 2em 0 0.5em;
+    }
+    /*
+    .thinkingatoms .ta-footer {
+        height: 2em;
+    }
+    .thinkingatoms .ta-footer .ui-btn {
+        padding: 0.5em 0;
+    }
+    .thinkingatoms .ta-nav-panel {
+        visibility: visible;
+        position: absolute;
+        left: 0;
+        float: left;
+        width: 17%;
+        background: none;
+        -webkit-transition: none !important;
+        -moz-transition: none !important;
+        transition: none !important;
+        -webkit-transform: none !important;
+        -moz-transform: none !important;
+        transform: none !important;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+    }
+    .thinkingatoms .ta-main.ui-content {
+        width: 80%;
+        float: right;
+        padding: 0;
+    } */
+    .thinkingatoms .ta-main.ui-content > .ta-welcome.ui-grid-a > .ui-block-a > div {
+        padding: 1em 0 1em 50%;
+    }
+    .thinkingatoms .ta-screen > .ui-block-a {
+        min-height: 7em;
+    }
+    .thinkingatoms .ta-main:not(.ta-mini) > .ui-grid-a > .ui-block-a,
+    .thinkingatoms .ta-main:not(.ta-mini) > .ui-grid-a > .ui-block-b {
+        width: 50%;
+    }
+    .thinkingatoms .ta-main.ta-mini .ta-screen > .ui-block-a {
+        height: 100%;
+        width: 38%;
+        float: right;
+    }
+    .thinkingatoms .ta-main.ta-mini .ta-screen > .ui-block-b {
+        height: 100%;
+        width: 62%;
+        clear: left;
+    }
+    .thinkingatoms .ta-mini .ta-screen .ui-block-a .ta-legend.ui-listview {
+        max-height: 80%;
+    }
+    .thinkingatoms .ta-screen .ui-block-a .ui-listview .ui-btn {
+        padding: 0.5em;
+    }
+    /*
+    .thinkingatoms .ta-alttext {
+        width: 29%;
+    }
+    .thinkingatoms .ui-panel .ui-listview .ui-btn:not(.ui-input-clear) {
+        padding-left: 12%;
+    }
+      */
+    .thinkingatoms .ui-panel-dismiss-open.ui-panel-dismiss-position-right {
+        left: -17em;
+        right: 17em;
+    }
+    .thinkingatoms text {
+        font-size: 0.9em;
+        font-weight: 400;
+    }
+    .thinkingatoms text.root {
+        font-size: 1.0em;
+    }
+    .thinkingatoms text.twoline {
+        font-size: 0.85em;
+    }
+    .thinkingatoms .lines > path.ta-filtered-in,
+    .thinkingatoms .lines > path.ta-hover:not(.ta-filtered),
+    .thinkingatoms .lines > path:hover {
+        stroke-width: 0.3em !important;
+    }
+}

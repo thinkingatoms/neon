@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="title" content="My Fipod">
+    <meta name="keywords" content="fipod, thinkingatoms, thinking atoms, finance, equity, stocks, market, financial tool, performance attribution, mock portfolio">
+    <meta name="description" content="free benchmark performance attribution financial tool">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <noscript>
+        <meta http-equiv="refresh" content="0; url={{ url_for('invalid_browser') }}">
+    </noscript>
+    <title>FiPod [Beta]</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='fav.ico') }}">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ url_for('static', filename='apple-touch-icon-76x76.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.mobile.icons.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.mobile.theme.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.mobile.structure.css') }}">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,700">{% if debug %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/thinkingatoms.css') }}">
+    <script src="{{ url_for('static', filename='lib/modernizr.js') }}"></script>
+    <script>
+        if (!Modernizr.svg || !Modernizr.localstorage)
+            if (location.search.indexOf('ignorebrowser=true') < 0)
+                window.location = 'invalid_browser';
+        var DEBUG = true;
+        var WEB_SOCKET_SWF_LOCATION = "//cdn.jsdelivr.net/socket.io-client/0.9.16/WebSocketMain.swf";
+    </script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
+    <script src="{{ url_for('static', filename='lib/jquery.ui.touchpunch.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/jquery.mobile.js') }}"></script>
+    <script src="//cdn.jsdelivr.net/socket.io-client/0.9.16/socket.io.min.js"></script>
+    <!-- <script src="//cdn.jsdelivr.net/d3js/3.4.11/d3.min.js"></script> -->
+    <script src="{{ url_for('static', filename='lib/underscore.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/d3.js') }}"></script>
+    <script src="{{ url_for('static', filename=debug + '/const.js') + version }}"></script>
+    <script src="{{ url_for('static', filename=debug + '/helper.js') + version }}"></script>
+    <script src="{{ url_for('static', filename=debug + '/brainless.js') + version }}"></script>
+    <script src="{{ url_for('static', filename=debug + '/fipod/model.js') + version }}"></script>
+    <script src="{{ url_for('static', filename=debug + '/fipod/controller.js') + version }}"></script>
+    <script src="{{ url_for('static', filename=debug + '/fipod/view.js') + version }}"></script>
+    <script src="{{ url_for('static', filename=debug + '/fipod/server.js') + version }}"></script>
+    <script src="{{ url_for('static', filename=debug + '/fipod/data.js') + version }}"></script>
+    <script src="{{ url_for('static', filename=debug + '/start.js') + version }}"></script>
+    {% else %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/thinkingatoms.min.css') }}">
+    <script>
+        var DEBUG = false;
+        var WEB_SOCKET_SWF_LOCATION = "//cdn.jsdelivr.net/socket.io-client/0.9.16/WebSocketMain.swf";
+    </script>
+    <script src="{{ url_for('static', filename='lib/modernizr.js') }}"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
+    <script src="{{ url_for('static', filename='lib/jquery.ui.touchpunch.min.js') }}"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.js"></script>
+    <script src="//cdn.jsdelivr.net/underscorejs/1.7.0/underscore-min.js"></script>
+    <script src="//cdn.jsdelivr.net/socket.io-client/0.9.16/socket.io.min.js"></script>
+    <script src="//cdn.jsdelivr.net/d3js/3.4.11/d3.min.js"></script>
+    <script src="{{ url_for('static', filename='lib/thinkingatoms.js') + version }}"></script>
+    {% endif %}
+    <script src="{{ url_for('static', filename='lib/base64.min.js') }}"></script>
+</head>
+
+<body>
+    <div data-role="page" class="thinkingatoms ta-home ui-page ui-page-theme-a ui-page-active">
+        <div data-role="header" class="ta-header ui-header ui-grid-b">
+            <div class="ui-block-a">
+                <a href="#" class="ta-btn-nav ta-lights ui-btn ui-btn-icon-notext ui-corner-all ui-icon-bullets ui-nodisc-icon ui-alt-icon ui-btn-left" title="Menu">Menu</a>
+            </div>
+            <div class="ui-block-b">
+                <a href="#" class="ta-btn-home ui-title ui-btn ui-corner-all ui-btn-left">FiPod [Beta]</a>
+            </div>
+            <div class="ui-block-c ta-responsive">
+                <div class="ui-grid-b">
+                    <!-- <div class="ui-grid-c"> -->
+                    <div class="ui-block-a"><a href="#" class="ta-btn-start ui-btn ui-icon-navigation ui-btn-icon-right ui-corner-all ui-btn-icon-notext" title="Get Started">Get Started</a>
+                    </div>
+
+                    <div class="ui-block-b"><a href="#" class="ta-btn-build ui-btn ui-icon-gear ui-btn-icon-right ui-corner-all ui-btn-icon-notext" title="Settings">Settings</a>
+                    </div>
+                    <div class="ui-block-c"><a href="#" class="ta-btn-lights ui-btn ui-icon-eye ui-btn-icon-right ui-corner-all ui-btn-icon-notext" title="Lights On/Off">Lights Off</a>
+                    </div>
+                </div>
+                <!-- /navbar icons only -->
+            </div>
+        </div>
+        <!-- /header -->
+
+        <div role="main" id="main" class="ta-main ui-content">
+            <div id="welcome" class="ta-welcome ui-grid-a">
+                <div class="ui-block-a">
+                    <h1>Introducing FiPod</h1>
+                    <div>a free financial web app that visualizes U.S. stock returns over time, grouped any way you like it!</div>
+                    <p>see for yourself and
+                        <a href="#" class="ta-welcome ta-btn-start ui-btn ui-btn-inline ui-icon-navigation ui-btn-icon-right ui-mini ui-btn-active">Get Started</a>
+                    </p>
+                </div>
+                <div class="ui-block-b">
+                    <svg viewBox="0 0 337 527">
+                        <g>
+                            <image xlink:href="/static/css/images/outline.png" height="525" width="335" />
+                            <rect style="stroke-width: 1px; stroke: #000; fill: none" height="527" width="337" y="0" x="0" />
+                            <rect style="stroke: none; fill: transparent" height="25" width="35" y="55" x="285" id="welcome-timer" />
+                            <g id="welcome-search" class="outline">
+                                <rect height="35" width="300" y="15" x="18" />
+                                <path d="M300,35L380,35" />
+                                <text transform="translate(390,40)" text-anchor="start">
+                                    <tspan x="0">Search for tickers or groups of stocks</tspan>
+                                    <tspan x="0" dy="1.3em">within your FiPod.</tspan>
+                                </text>
+                            </g>
+                            <g id="welcome-legend" class="outline">
+                                <rect height="25" width="270" y="55" x="18" />
+                                <path d="M240,70L380,120" />
+                                <text transform="translate(390,120)" text-anchor="start">
+                                    <tspan x="0">This shows returns details as you navigate</tspan>
+                                    <tspan x="0" dy="1.3em">Tap it to see the legend for the lines</tspan>
+                                </text>
+                            </g>
+                            <g id="welcome-timeline" class="outline">
+                                <rect height="110" width="300" y="95" x="21" />
+                                <path d="M300,180L380,200" />
+                                <text transform="translate(390,200)" text-anchor="start">
+                                    <tspan x="0">When you click or tap a part of the wheel,</tspan>
+                                    <tspan x="0" dy="1.3em">its historical cumulative returns will show up here.</tspan>
+                                    <tspan x="0" dy="1.3em" class="no-touch">Double-click to maximize this graph</tspan>
+                                </text>
+                            </g>
+                            <g id="welcome-wheel" class="outline">
+                                <circle r="125" cy="368" cx="168" />
+                                <path d="M200,300L380,330" />
+                                <text transform="translate(390,310)" text-anchor="start">
+                                    <tspan x="0">Move around on the wheel</tspan>
+                                    <tspan x="0" dy="1.3em">to browse different parts.</tspan>
+                                    <tspan x="0" dy="1.3em">Click or tap once to zoom in,</tspan>
+                                    <tspan x="0" dy="1.3em">twice to see securities underneath.</tspan>
+                                    <tspan x="0" dy="1.3em" class="touch">Swipe down to maximize the line graph</tspan>
+                                </text>
+                            </g>
+                            <g id="welcome-button" class="outline">
+                                <circle r="55" cy="368" cx="168" />
+                                <path d="M180,370L380,480" />
+                                <text transform="translate(390,480)" text-anchor="start">
+                                    <tspan x="0">This is like a "home" button.</tspan>
+                                    <tspan x="0" dy="1.3em">Once zoomed in, click or tap to get back</tspan>
+                                </text>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+            <div id="graphs" class="ui-grid-a">
+                <div class="ui-block-a">
+                    <div id="screen" class="ta-screen ui-grid-a">
+                        <div class="ui-block-a ui-nodisc-icon">
+                            <div class="ta-lights ui-alt-icon">
+                                <form>
+                                    <input id="search" data-type="search" data-corners="false" placeholder="Search for Stocks or in Charts" class="ta-lights">
+                                </form>
+                                <ul id="results" class="ta-results ui-listview">
+                                </ul>
+                            </div>
+                            <ul class="ta-alttext ui-listview" data-role="listview">
+                                <li class="ui-li-has-alt ui-first-child">
+                                    <a href="#" id="current" class="ui-btn ui-btn-icon-right">
+                                        <div class="ta-row">Loading..</div>
+                                        <div class="ta-row">&nbsp;</div>
+                                    </a>
+                                    <a href="#" id="sincelink" class="ui-btn ui-icon-clock ui-btn-icon-right ui-btn-icon-notext" role="button"></a>
+                                </li>
+                            </ul>
+                            <ul id="legend" class="ta-legend ui-listview ta-lights ui-alt-icon" data-role="listview">
+                            </ul>
+                        </div>
+                        <div id="timeline" class="ui-block-b">
+                        </div>
+                    </div>
+                </div>
+                <div id="wheel" class="ui-block-b">
+                </div>
+            </div>
+        </div>
+        <!-- /content -->
+
+        <div data-role="panel" id="nav" class="ta-nav-panel ui-nodisc-icon" data-display="overlay" data-position="left">
+            <ul id="menu" class="ta-lights ui-listview ui-alt-icon" data-role="listview">
+                <li data-filtertext="welcome homepage" class="ui-first-child">
+                    <a href="#" class="ta-btn-home ui-btn ui-btn-icon-right ui-icon-home">Welcome</a>
+                </li>
+                <li>
+                    <a href="#" class="ta-btn-start ui-btn ui-icon-navigation ui-btn-icon-right ui-btn-inherit">Get Started</a>
+                </li>
+                <li data-role="collapsible" data-enhanced="true" data-collapsed-icon="gear" data-expanded-icon="carat-d" data-iconpos="right" data-inset="false" class="ui-collapsible ui-collapsible-themed-content ui-collapsible-collapsed">
+                    <h3 class="ui-collapsible-heading ui-collapsible-heading-collapsed">
+                        <a href="#"
+                            class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-right ui-btn-inherit ui-icon-gear">Settings</a>
+                    </h3>
+                    <div id="settings" class="ui-collapsible-content ui-body-inherit ui-collapsible-content-collapsed" aria-hidden="true">
+                        <ul class="ui-listview">
+                            <li>
+                                <a href="#" id="headline" class="ui-btn ui-icon-gear ui-btn-icon-right ui-btn-inherit" style="display: block !important"></a>
+                            </li>
+                            <li id="headlines" class="ui-li-static ui-body-inherit">
+                                <ul data-filter="true" data-filter-placeholder="Benchmarks" data-arrow-key-nav="true">
+                                </ul>
+                            </li>
+                            <li>
+                                <select id="breakdowns" multiple="multiple" data-native-menu="false" data-icon="plus" data-disabled="false" data-corners="false">
+                                    <option data-placeholder="true">Group By..</option>
+                                </select>
+                            </li>
+                            <li>
+                                <ul id="breakdown"></ul>
+                            </li>
+                            <li>
+                                <select id="since" data-icon="clock" data-iconpos="right" data-native-menu="false" data-corners="false">
+                                    <option value="-1" selected="true">Since Last Business Day</option>
+                                    <option value="-30">Since 30 Days Ago</option>
+                                    <option value="-90">Since 90 Days Ago</option>
+                                    <option value="-180">Since 180 Days Ago</option>
+                                    <option value="YTD">Since Beginning of Year</option>
+                                </select>
+                            </li>
+                            <li>
+                                <a class="ui-btn ui-btn-inherit ui-btn-icon-right ui-checkbox-off" id="ret-type">Include Dividends?</a>
+                            </li>
+                            <li>
+                                <a href="#" data-role="button" id="build" data-icon="carat-r" data-iconpos="right" data-corners="false">Done!</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="ta-extra"><a href="#" class="ta-btn-lights ui-btn ui-icon-eye ui-btn-icon-right ui-btn-inherit">Lights Off</a>
+                </li>
+                <li class="ta-extra"><a href="#soon" class="ui-btn ui-icon-calendar ui-btn-icon-right ui-btn-inherit">Coming Soon</a>
+                </li>
+                <li class="ta-extra">
+                    <a href="#contact" class="ui-btn ui-btn-inherit ui-icon-comment ui-btn-icon-right">Contact Us</a>
+                </li>
+                <li class="ta-extra">
+                    <a href="#disclaimer" class="ui-btn ui-btn-inherit ui-icon-info ui-btn-icon-right">Disclaimer</a>
+                </li>
+                <li class="ta-extra">
+                    <a href="#about" class="ui-btn ui-btn-inherit ui-icon-star ui-btn-icon-right">About Us</a>
+                </li>
+                <li class="ta-extra">
+                    <a href="#reset" data-rel="popup" class="ui-btn ui-icon-power ui-btn-icon-right ui-btn-inherit" data-position-to="window" data-transition="pop">Reset</a>
+                </li>
+            </ul>
+        </div>
+        <!-- nav panel -->
+
+        <div data-role="panel" id="soon" class="ta-side-panel" data-display="overlay" data-position="right">
+            <a href="#" class="ta-close" data-role="button" data-icon="delete" data-rel="close" data-iconpos="notext">Close</a>
+            <h3>Coming Soon</h3>
+            <div data-role="collapsibleset">
+                <div data-role="collapsible" data-inset="false">
+                    <h4>In a week or two</h4>
+                    <ul data-role="listview">
+                        <li>More quantitative criterias to group stocks by, such as volatility quantiles</li>
+                        <li>Super graph search that goes beyond name calling (and into our hearts?)</li>
+                        <li>Save and share your preferences</li>
+                    </ul>
+                </div>
+                <div data-role="collapsible" data-inset="false">
+                    <h4>Not too distant future</h4>
+                    <ul data-role="listview">
+                        <li>Mock portfolios to see your intra-day trade performance and attribution</li>
+                        <li>Getting real(-time) with stocks</li>
+                        <li>Better "Get Started" navigation to help anyone kickstart their FiPod</li>
+                        <li>and much much more, stay tuned!</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- coming soon panel -->
+
+        <div data-role="panel" id="contact" class="ta-side-panel" data-display="overlay" data-position="right">
+            <a href="#" class="ta-close" data-role="button" data-icon="delete" data-rel="close" data-iconpos="notext">Close</a>
+            <h3>Contact Us</h3>
+            <form id="contactform">
+                <p class="ta-invalid" style="display: none"></p>
+                <label for="email">Email:</label>
+                <input data-corners="false" name="email" id="email" value="" type="email">
+                <label for="subject">Subject:</label>
+                <input data-corners="false" name="subject" id="subject" value="" type="text">
+                <label for="message">Message:</label>
+                <textarea data-corners="false" name="message" id="message"></textarea>
+                <button type="submit" data-corners="false" data-icon="mail" data-iconpos="right" id="send">Send</button>
+            </form>
+        </div>
+        <!-- contact panel -->
+
+        <div data-role="panel" id="disclaimer" class="ta-side-panel" data-display="overlay" data-position="right">
+            <a href="#" class="ta-close" data-role="button" data-icon="delete" data-rel="close" data-iconpos="notext">Close</a>
+            <h3>Disclaimer</h3>
+            <p>The Services are provided "as is" without representations or warranties of any kind, either expressed or implied.</p>
+            <p>Past performance does not guarantee future results.</p>
+            <p>We plan to make this site open source soon, so you can scrutinize (and improve!) our calculations. special thanks to: <a href="http://bsym.bloomberg.com" target="_blank">Bloomberg Open Symbology</a> for security identifiers and <a href="http://www.google.com/finance"
+                target="_blank">Google Finance</a> real-time pricing api</p>
+            <p>Click <a href="https://thinkingatoms.com/terms" target="_blank">here</a> for full terms of use.</p>
+        </div>
+        <!-- disclaimer panel -->
+
+        <div data-role="panel" id="about" class="ta-side-panel" data-display="overlay" data-position="right">
+            <a href="#" class="ta-close" data-role="button" data-icon="delete" data-rel="close" data-iconpos="notext">Close</a>
+            <h3>About Us</h3>
+            <p>
+                ThinkingAtoms started when I, Tom Huang, was trying to compare my own portfolio against certain sections of S&P 1500, and couldn't find a free easy way of doing it.</p>
+            <p>I used to work on benchmark construction and performance for six years at one of the largest asset management companies, and decided to roll my own trade performance and daily attribution calculators from scratch using publicly available pricing
+                sources.
+            </p>
+            <p>This site is a byproduct that I hope others may benefit from, and would love to hear your comments and suggestions!</p>
+        </div>
+
+        <div id="tooltip" class="ta-tooltip ui-content" data-arrow="true" data-corners="false" data-history="false">
+            <a href="#" data-rel="back" class="ta-close ui-btn ui-corner-all ui-shadow ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+            <p class="ta-tooltip-tip"></p>
+        </div>
+        <div data-role="popup" id="reset" class="ta-dialog ui-content">
+            <a href="#" data-rel="back" class="ta-close ui-btn ui-shadow ui-icon-delete ui-btn-icon-notext ui-btn-right ui-corner-all">Close</a>
+            <h3>Reset Preferences</h3>
+            <p>This will clear all data from your browser and cannot be undone, are you sure you want to continue?.</p>
+            <div class="ui-grid-a">
+                <div class="ui-block-a">
+                    <a href="#" id="restart" class="ui-btn ui-shadow ui-btn-inline">Yes</a>
+                </div>
+                <div class="ui-block-b">
+                    <a href="#" class="ui-btn ui-shadow ui-btn-inline" data-rel="back" style="float: right">No</a>
+                </div>
+            </div>
+        </div>
+        <!-- /page -->
+</body>
+
+</html>
