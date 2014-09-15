@@ -60,3 +60,5 @@ FiPod controllers on plain objects:
 FiPod controllers for DOM elements are located in:
 * [static/js/fipod/view.js](static/js/fipod/view.js)
 
+If you have any questions or comments please feel free to
+email atom@thinkingatoms.com, thanks!
